@@ -3,7 +3,7 @@ import React from 'react';
 export default function MenuItemComponent({ item }) {
   if (!item) return <h5>"No Matches"</h5>;
   return (
-    <div className="card MenuItemComponent" key={item.id}>
+    <div className="card MenuItemComponent">
       <div className="card-image">
         <img src={item.imagePath || '//via.placeholder.com/300x200'} alt={item.name} />
       </div>

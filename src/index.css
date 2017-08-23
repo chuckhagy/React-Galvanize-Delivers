@@ -1,2 +1,45 @@
 @import '../node_modules/materialize-css/dist/css/materialize.css';
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+.OrderTableComponent{
+  font-weight: bold;
+  min-width: 350px;
+}
+
+.orderTable{
+  margin-bottom: 20px;
+}
+
+.totalsTags{
+  text-align: right;
+}
+.totalsNums{
+  text-align: left;
+}
+
+.OrderPageLayout{
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 14%;
+
+}
+
+.OrderFormComponent{
+  max-width: 375px;
+  width: 90%;
+}
+
+button{
+  margin: 20px 0 0 70px;
+}
+
+.MenuItemComponent {
+  margin: 20px;
+  width: 250px;
+}
+
+.MenuComponent {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600px;
+}
