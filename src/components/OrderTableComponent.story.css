@@ -1,0 +1,15 @@
+.OrderTableComponent{
+  font-weight: bold;
+  min-width: 350px;
+}
+
+.orderTable{
+  margin-bottom: 20px;
+}
+
+.totalsTags{
+  text-align: right;
+}
+.totalsNums{
+  text-align: left;
+}
