@@ -6,9 +6,12 @@ export default function OrderTableComponent({ items }){
   for(let item of items){
     itemsArr.push(item.price);
   }
-  subTotal += itemsArr.reduce(function (sum, value) {
-    return sum + value
-  })
+  if(items.length > 0){
+    subTotal += itemsArr.reduce(function (sum, value) {
+      return sum + value
+    })
+  }
+
   let tax = (subTotal * 0.085).toFixed(2);
   let total = (parseFloat(subTotal) + parseFloat(tax)).toFixed(2);
   return(
@@ -21,7 +24,7 @@ export default function OrderTableComponent({ items }){
         </tr>
       </thead>
       <tbody>
-        {items.map(item => <tr key={item.id.toString()}><td>{item.name}</td><td>${item.price}</td></tr>)}
+        {items.map((item, index) => <tr key={index}><td>{item.name}</td><td>${item.price}</td></tr>)}
       </tbody>
     </table>
     <div className="row">
@@ -31,7 +34,7 @@ export default function OrderTableComponent({ items }){
         <div>Total:</div>
       </div>
       <div className="col s5 totalsNums">
-        <div>${subTotal}</div>
+        <div>${subTotal.toFixed(2)}</div>
         <div>${tax}</div>
         <div>${total}</div>
       </div>

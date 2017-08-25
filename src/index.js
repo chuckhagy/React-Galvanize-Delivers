@@ -1,60 +1,50 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import OrderPageLayout from './components/OrderPageLayout';
-import MenuComponent from './components/MenuComponent';
-import OrderFormComponent from './components/OrderFormComponent';
-import OrderTableComponent from './components/OrderTableComponent';
+import OrderPage from './components/OrderPage'
 
-ReactDOM.render(<OrderPageLayout>
+let menuItems = [
+  {
+    id: '001',
+    name: 'Some Item A',
+    price: 9.99,
+    imagePath: '//via.placeholder.com/300x200'
+  },
+  {
+    id: '002',
+    name: 'Some Item B',
+    price: 8.99,
+    imagePath: '//via.placeholder.com/300x200'
+  },
+  {
+    id: '003',
+    name: 'Some Item C',
+    price: 7.99,
+    imagePath: '//via.placeholder.com/300x200'
+  },
+  {
+    id: '004',
+    name: 'Some Item D',
+    price: 6.99,
+    imagePath: '//via.placeholder.com/300x200'
+  }
+]
 
-  <MenuComponent items={[
-    {
-      id: '001',
-      name: 'Some Item A',
-      price: 9.99,
-      imagePath: '//via.placeholder.com/300x200'
-    },
-    {
-      id: '002',
-      name: 'Some Item B',
-      price: 8.99,
-      imagePath: '//via.placeholder.com/300x200'
-    },
-    {
-      id: '003',
-      name: 'Some Item C',
-      price: 7.99,
-      imagePath: '//via.placeholder.com/300x200'
-    },
-    {
-      id: '004',
-      name: 'Some Item D',
-      price: 6.99,
-      imagePath: '//via.placeholder.com/300x200'
-    }
-  ]} />
-  <OrderTableComponent items={[
-    {
-      name: "Swine",
-      price: 9.99,
-      id: "001"
-    },
-    {
-      name: "Ice Cream",
-      price: 4.99,
-      id: "002"
-    },
-    {
-      name: "Pizza",
-      price: 12.99,
-      id: "003"
-    }
-  ]} />
-  <OrderFormComponent defaultCustomerInfo={{
-  name: 'Nestor Toro',
-  phone: '(650) 533-8676',
-  address: '123 Main Street, Oakland, CA'
-  }} /> 
+let orderItems = [];
 
-</OrderPageLayout>, document.getElementById('root'));
+let defaultCustomerInfo = {
+name: 'Nestor Toro',
+phone: '(650) 533-8676',
+address: '123 Main Street, Oakland, CA'
+}
+
+render();
+
+function handleAddItem(itemId){
+  orderItems.push(menuItems.find(item => item.id === itemId));
+  render()
+};
+
+function render(){
+ReactDOM.render(<OrderPage menuItems={menuItems} orderItems={orderItems} defaultCustomerInfo={defaultCustomerInfo} handleAddItem={handleAddItem} />, document.getElementById('root'));
+}
