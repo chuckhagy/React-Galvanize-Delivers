@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import OrderPageLayout from './components/OrderPageLayout';
-// import MenuItemComponent from './components/MenuItemComponent';
 import MenuComponent from './components/MenuComponent';
 import OrderFormComponent from './components/OrderFormComponent';
 import OrderTableComponent from './components/OrderTableComponent';
