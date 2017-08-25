@@ -40,11 +40,11 @@ address: '123 Main Street, Oakland, CA'
 
 render();
 
-function handleAddItem(itemId){
+function onAddItem(itemId){
   orderItems.push(menuItems.find(item => item.id === itemId));
   render()
 };
 
 function render(){
-ReactDOM.render(<OrderPage menuItems={menuItems} orderItems={orderItems} defaultCustomerInfo={defaultCustomerInfo} handleAddItem={handleAddItem} />, document.getElementById('root'));
+ReactDOM.render(<OrderPage menuItems={menuItems} orderItems={orderItems} defaultCustomerInfo={defaultCustomerInfo} onAddItem={onAddItem} />, document.getElementById('root'));
 }
