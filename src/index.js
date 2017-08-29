@@ -32,19 +32,34 @@ let menuItems = [
 
 let orderItems = [];
 
-let defaultCustomerInfo = {
-name: 'Nestor Toro',
-phone: '(650) 533-8676',
-address: '123 Main Street, Oakland, CA'
-}
+let customerInfo=null;
 
 render();
 
 function onAddItem(itemId){
   orderItems.push(menuItems.find(item => item.id === itemId));
-  render()
+  render();
 };
 
+function onSubmit({name, phone, address}){
+  customerInfo={name, phone, address};
+  render();
+}
+
+function onClose(){
+  customerInfo=null;
+  orderItems = [];
+
+  render();
+}
+
 function render(){
-ReactDOM.render(<OrderPage menuItems={menuItems} orderItems={orderItems} defaultCustomerInfo={defaultCustomerInfo} onAddItem={onAddItem} />, document.getElementById('root'));
+ReactDOM.render(<OrderPage
+  menuItems={menuItems}
+  orderItems={orderItems}
+  customerInfo={customerInfo}
+  onAddItem={onAddItem}
+  onSubmit={onSubmit}
+  onClose={onClose}
+/>, document.getElementById('root'));
 }

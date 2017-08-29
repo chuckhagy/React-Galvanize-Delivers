@@ -5,7 +5,7 @@ export default function MenuItemComponent({ item, onAddItem }) {
   
   function handleClick(event){
     event.preventDefault();
-    onAddItem(item.id)
+    onAddItem(item.id);
   }
   
   return (
