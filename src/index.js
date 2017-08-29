@@ -41,12 +41,12 @@ function onAddItem(itemId){
   render();
 };
 
-function onSubmit({name, phone, address}){
+function onSubmitOrderForm({name, phone, address}){
   customerInfo={name, phone, address};
   render();
 }
 
-function onClose(){
+function onCloseOrderSuccessMessage(){
   customerInfo=null;
   orderItems = [];
 
@@ -59,7 +59,7 @@ ReactDOM.render(<OrderPage
   orderItems={orderItems}
   customerInfo={customerInfo}
   onAddItem={onAddItem}
-  onSubmit={onSubmit}
-  onClose={onClose}
+  onSubmitOrderForm={onSubmitOrderForm}
+  onCloseOrderSuccessMessage={onCloseOrderSuccessMessage}
 />, document.getElementById('root'));
 }

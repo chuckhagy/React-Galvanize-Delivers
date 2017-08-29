@@ -6,7 +6,7 @@ import OrderTableComponent from './OrderTableComponent';
 import OrderSuccessMessageComponent from './OrderSuccessMessageComponent';
 
 
-export default function OrderPage( {menuItems, orderItems, onAddItem, onSubmit, customerInfo, onClose}){
+export default function OrderPage( {menuItems, orderItems, onAddItem, onSubmitOrderForm, customerInfo, onCloseOrderSuccessMessage}){
 
 
   return(
@@ -15,8 +15,8 @@ export default function OrderPage( {menuItems, orderItems, onAddItem, onSubmit, 
       <MenuComponent items={menuItems}  onAddItem={onAddItem} />
       <OrderTableComponent items={orderItems} />
       {customerInfo ?
-        <OrderSuccessMessageComponent customerInfo={customerInfo} onClose={onClose} />
-        : <OrderFormComponent onSubmit={onSubmit} />};
+        <OrderSuccessMessageComponent customerInfo={customerInfo} onClose={onCloseOrderSuccessMessage} />
+        : <OrderFormComponent onSubmitOrderForm={onSubmitOrderForm} items={orderItems}/>};
     </OrderPageLayout>
   </div>
   );

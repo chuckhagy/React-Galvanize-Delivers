@@ -46,14 +46,14 @@ export default class OrderFormComponent extends React.Component{
     }
 
   _handleSubmit = event => {
-    const { onSubmit } = this.props;
+    const { onSubmitOrderForm, items } = this.props;
     event.preventDefault();
     const $form = event.target;
-    let name = $form.name.value;
-    let phone = $form.phone.value;
-    let address = $form.address.value;
-    if(name.length > 3 && /^[a-zA-Z\s]+/.test(name) && phone.length >= 10 && /^[\d(\s][\d-\s)]+$/.test(phone)  && address.length > 5 && /^[\d]/.test(address)){
-      onSubmit({name, phone, address})
+    let name = $form.name.value.trim();
+    let phone = $form.phone.value.trim();
+    let address = $form.address.value.trim();
+    if(items.length > 0 && name.length > 3 && /^[a-zA-Z\s]+/.test(name) && phone.length >= 10 && /^[\d(\s][\d-\s)]+$/.test(phone)  && address.length > 5 && /^[\d]/.test(address)){
+      onSubmitOrderForm({name, phone, address})
     }
     else{
       this.setState({
