@@ -37,6 +37,9 @@ export default class OrderFormComponent extends React.Component{
             </div>
           </div>
           <button className="btn-large waves-effect waves-light red" type="submit" id="myButton">PLACE ORDER</button>
+          {this.state.hasValidationErrors ?
+          <p style={{color: 'red', fontWeight: "bold"}}>Please check your above information.</p>:
+          null}
         </form>
         </div>
       )
@@ -49,7 +52,14 @@ export default class OrderFormComponent extends React.Component{
     let name = $form.name.value;
     let phone = $form.phone.value;
     let address = $form.address.value;
-    onSubmit({name, phone, address})
+    if(name.length > 3 && /^[a-zA-Z\s]+/.test(name) && phone.length >= 10 && /^[\d(\s][\d-\s)]+$/.test(phone)  && address.length > 5 && /^[\d]/.test(address)){
+      onSubmit({name, phone, address})
+    }
+    else{
+      this.setState({
+        hasValidationErrors: true
+      })
+    }
   }
 
 }
