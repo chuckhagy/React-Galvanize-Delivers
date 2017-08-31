@@ -3,10 +3,9 @@ import './App.css';
 import OrderPage from './components/OrderPage'
 import getMenuItems from './requests/getMenuItems'
 
-let menuItems = [];
 export default class App extends Component {
   state={
-    menuItems: menuItems,
+    menuItems: null,
     orderItems: [],
     customerInfo: null
   }

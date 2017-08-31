@@ -9,6 +9,8 @@ export default function MenuComponent({ items, onAddItem}) {
       <div className="MenuComponent">
         {items.map(item => <MenuItemComponent item={item} key={item.id} onAddItem={onAddItem} /> )}
       </div>
-    );  
+    );
+  }else{
+    return <div style={{width: "300px", height: '100vh'}}>Loading...</div>
   }
 }
