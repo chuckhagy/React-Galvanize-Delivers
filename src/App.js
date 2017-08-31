@@ -1,33 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import OrderPage from './components/OrderPage'
+import getMenuItems from './requests/getMenuItems'
 
-let menuItems = [
-  {
-    id: '001',
-    name: 'Some Item A',
-    price: 9.99,
-    imagePath: '//via.placeholder.com/300x200'
-  },
-  {
-    id: '002',
-    name: 'Some Item B',
-    price: 8.99,
-    imagePath: '//via.placeholder.com/300x200'
-  },
-  {
-    id: '003',
-    name: 'Some Item C',
-    price: 7.99,
-    imagePath: '//via.placeholder.com/300x200'
-  },
-  {
-    id: '004',
-    name: 'Some Item D',
-    price: 6.99,
-    imagePath: '//via.placeholder.com/300x200'
-  }
-]
+let menuItems = [];
 export default class App extends Component {
   state={
     menuItems: menuItems,
@@ -49,6 +25,16 @@ export default class App extends Component {
       </div>
     )
   }
+
+  componentDidMount(){
+    getMenuItems().then(menuItems => {
+      this.setState({
+        menuItems
+      })
+    })
+  }
+
+
   _onAddItem = itemId => {
     this.setState(prevState => {
       return{
