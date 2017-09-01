@@ -2,12 +2,12 @@ import React from 'react';
 
 export default function MenuItemComponent({ item, onAddItem }) {
   if (!item) return <h5>"No Matches"</h5>;
-  
+
   function handleClick(event){
     event.preventDefault();
     onAddItem(item.id);
   }
-  
+
   return (
     <div className="card MenuItemComponent">
       <div className="card-image">
@@ -22,7 +22,7 @@ export default function MenuItemComponent({ item, onAddItem }) {
         </p>
       </div>
       <div className="card-action">
-        <a href="#" onClick={handleClick}>ADD TO ORDER</a>
+        <a onClick={handleClick}>ADD TO ORDER</a>
       </div>
     </div>
   );

@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function OrderPageLayout(props){
   return(
-<div>      
-     <nav className="blue darken-3" role="navigation">
+<div>
+     <nav className="blue darken-3">
       <div className="nav-wrapper"><a id="logo-container" href="index.html" className="brand-logo">Galvanize Delivers</a>
         <ul className="right hide-on-med-and-down">
           <li className="active"><a href="order.html">Order Delivery</a></li>
@@ -12,7 +12,7 @@ export default function OrderPageLayout(props){
         <ul id="nav-mobile" className="side-nav">
           <li className="active"><a href="order.html">Order Delivery</a></li>
         </ul>
-        <a href="#" data-activates="nav-mobile" className="button-collapse"><i className="material-icons">menu</i></a>
+        <a data-activates="nav-mobile" className="button-collapse"><i className="material-icons">menu</i></a>
       </div>
     </nav>
     <div className="OrderPageLayout">
@@ -23,7 +23,7 @@ export default function OrderPageLayout(props){
         {props.children[2]}
       </div>
     </div>
-      
+
       <footer className="page-footer blue darken-2">
         <div className="container">
           <div className="row blue darken-2">
@@ -34,7 +34,7 @@ export default function OrderPageLayout(props){
             <div className="col l4 offset-l2 s12">
               <ul>
                 <li><a className="grey-text text-lighten-3" href="index.html">Home</a></li>
-                <li><a className="grey-text text-lighten-3" href="#">Order Delivery</a></li>
+                <li><a className="grey-text text-lighten-3">Order Delivery</a></li>
               </ul>
             </div>
           </div>
