@@ -22,7 +22,7 @@ export default function MenuItemComponent({ item, onAddItem }) {
         </p>
       </div>
       <div className="card-action">
-        <a onClick={handleClick}>ADD TO ORDER</a>
+        <a className="menuChoice" onClick={handleClick}>ADD TO ORDER</a>
       </div>
     </div>
   );

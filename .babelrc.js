@@ -1,3 +1,4 @@
 module.exports = {
-  presets: ['react-app']
-};
+"presets": ["es2015", "react"],
+"plugins": ["transform-object-rest-spread"]
+}
