@@ -25,4 +25,7 @@ describe('a shallow test', () => {
     mount(<MenuItemComponent onAddItem={onAddItem} item={item} />).find('.menuChoice').simulate('click');
     expect(onAddItem).toHaveBeenCalled()
   });
+  it('should match snapshot', () => {
+    expect(shallowWrapper).toMatchSnapshot()
+  });
 });
