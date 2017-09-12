@@ -4,13 +4,22 @@ import OrderPage from './components/OrderPage'
 import getMenuItems from './requests/getMenuItems'
 
 export default class App extends Component {
-  state={
-    menuItems: null,
-    orderItems: [],
-    customerInfo: null
-  }
+    constructor(props) {
+      super(props);
+
+      this.state={
+        menuItems: null,
+        orderItems: [],
+        customerInfo: null
+      }
+
+      this.props.store.subscribe(() => {
+        this.setState(this.props.store.getState());
+      });
+    }
 
   render() {
+    // console.log(this.props.store.getState())
     return(
       <div className="App">
         <OrderPage
@@ -30,25 +39,47 @@ export default class App extends Component {
       this.setState({
         menuItems
       })
+      this.props.store.dispatch({
+        type: 'GET_ITEMS',
+        newMenuItems: menuItems
+      })
     })
   }
 
 
   _onAddItem = itemId => {
-    this.setState(prevState => {
-      return{
-        orderItems: [...prevState.orderItems, prevState.menuItems.find(item => item.id === itemId)]
-      }
-    })
+      this.props.store.dispatch({
+        type: 'ADD_ITEM',
+        id: itemId
+      });
   };
 
   _onSubmitOrderForm = ({name, phone, address}) => {
     this.setState({customerInfo: {name, phone, address}});
+
+    // {
+    //   this.props.store.dispatch({
+    //     type: 'SUBMIT_ORDER',
+    //     name,
+    //     phone,
+    //     address
+    //   });
+    // };
+
   }
 
   _onCloseOrderSuccessMessage = event => {
     this.setState({customerInfo: null});
     this.setState({orderItems: []});
+
+    // {
+    //   this.props.store.dispatch({
+    //     type: 'CLOSE_ORDER',
+    //     customerInfo: null,
+    //     orderItems: []
+    //   });
+    // };
+
   }
 
 }
