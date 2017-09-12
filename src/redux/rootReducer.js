@@ -4,12 +4,14 @@ export default function rootReducer(currentState = {
   customerInfo: null
 }, action){
   switch(action.type){
+
     case 'GET_ITEMS':
       return {
         menuItems: action.newMenuItems,
         orderItems: [],
         customerInfo: null
       };
+
     case 'ADD_ITEM':
       return {
         ...currentState,

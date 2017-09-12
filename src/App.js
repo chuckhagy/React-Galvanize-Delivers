@@ -36,9 +36,6 @@ export default class App extends Component {
 
   componentDidMount(){
     getMenuItems().then(menuItems => {
-      this.setState({
-        menuItems
-      })
       this.props.store.dispatch({
         type: 'GET_ITEMS',
         newMenuItems: menuItems
