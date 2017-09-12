@@ -5,19 +5,29 @@ export default function rootReducer(currentState = {
 }, action){
   switch(action.type){
     case 'GET_ITEMS':
-      return {menuItems: action.newMenuItems};
+      return {
+        menuItems: action.newMenuItems,
+        orderItems: [],
+        customerInfo: null
+      };
     case 'ADD_ITEM':
-      return {orderItems: [...currentState.orderItems, currentState.menuItems.find(item => {
-        console.log(item)
-        return item.id === action.itemId;
-      }
-    )]};
+      return {
+        ...currentState,
+        orderItems: [...currentState.orderItems, currentState.menuItems.find(item => item.id === action.id)],
+      };
+
     case 'SUBMIT_ORDER':
-      console.log("SUBMIT_ORDER Happens");
-      return currentState;
-    case 'CLOSER_ORDER':
-      console.log("CLOSER_ORDER Happens");
-      return currentState;
+      return {
+        ...currentState,
+        customerInfo: {name: action.name, phone: action.phone, address: action.address}
+      };
+
+    case 'CLOSE_ORDER':
+    return {
+      ...currentState,
+      customerInfo: action.customerInfo,
+      orderItems: action.orderItems
+    };
 
     default:
       return currentState;

@@ -55,31 +55,20 @@ export default class App extends Component {
   };
 
   _onSubmitOrderForm = ({name, phone, address}) => {
-    this.setState({customerInfo: {name, phone, address}});
-
-    // {
-    //   this.props.store.dispatch({
-    //     type: 'SUBMIT_ORDER',
-    //     name,
-    //     phone,
-    //     address
-    //   });
-    // };
-
+      this.props.store.dispatch({
+        type: 'SUBMIT_ORDER',
+        name: name,
+        phone: phone,
+        address: address
+      });
   }
 
   _onCloseOrderSuccessMessage = event => {
-    this.setState({customerInfo: null});
-    this.setState({orderItems: []});
-
-    // {
-    //   this.props.store.dispatch({
-    //     type: 'CLOSE_ORDER',
-    //     customerInfo: null,
-    //     orderItems: []
-    //   });
-    // };
-
+      this.props.store.dispatch({
+        type: 'CLOSE_ORDER',
+        customerInfo: null,
+        orderItems: []
+      });
   }
 
 }
