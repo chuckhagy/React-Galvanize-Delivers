@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import OrderPage from './components/OrderPage'
-import getMenuItems from './requests/getMenuItems'
+import getMenuProcess from './redux/thunks/getMenuProcess'
+import addItemProcess from './redux/thunks/addItemProcess'
+import submitOrderFormProcess from './redux/thunks/submitOrderFormProcess'
+import closeOrderSuccessProcess from './redux/thunks/closeOrderSuccessProcess'
 
 export default class App extends Component {
     constructor(props) {
@@ -19,7 +22,6 @@ export default class App extends Component {
     }
 
   render() {
-    // console.log(this.props.store.getState())
     return(
       <div className="App">
         <OrderPage
@@ -35,37 +37,19 @@ export default class App extends Component {
   }
 
   componentDidMount(){
-    getMenuItems().then(menuItems => {
-      this.props.store.dispatch({
-        type: 'GET_ITEMS',
-        newMenuItems: menuItems
-      })
-    })
-  }
-
+    this.props.store.dispatch(getMenuProcess())
+  };
 
   _onAddItem = itemId => {
-      this.props.store.dispatch({
-        type: 'ADD_ITEM',
-        id: itemId
-      });
+    this.props.store.dispatch(addItemProcess(itemId))
   };
 
   _onSubmitOrderForm = ({name, phone, address}) => {
-      this.props.store.dispatch({
-        type: 'SUBMIT_ORDER',
-        name: name,
-        phone: phone,
-        address: address
-      });
+    this.props.store.dispatch(submitOrderFormProcess(name, phone, address))
   }
 
-  _onCloseOrderSuccessMessage = event => {
-      this.props.store.dispatch({
-        type: 'CLOSE_ORDER',
-        customerInfo: null,
-        orderItems: []
-      });
+  _onCloseOrderSuccessMessage = () => {
+    this.props.store.dispatch(closeOrderSuccessProcess())
   }
 
 }
