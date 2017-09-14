@@ -1,5 +1,5 @@
 export default function rootReducer(currentState = {
-  menuItems: null,
+  menuItems: [],
   orderItems: [],
   customerInfo: null
 }, action){
