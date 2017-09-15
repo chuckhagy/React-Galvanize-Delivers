@@ -1,55 +1,26 @@
 import React, { Component } from 'react';
 import './App.css';
 import OrderPage from './components/OrderPage'
+import OrderPageContainer from './redux/OrderPageContainer'
 import getMenuProcess from './redux/thunks/getMenuProcess'
 import addItemProcess from './redux/thunks/addItemProcess'
 import submitOrderFormProcess from './redux/thunks/submitOrderFormProcess'
 import closeOrderSuccessProcess from './redux/thunks/closeOrderSuccessProcess'
+import { Provider } from 'react-redux'
+
+import setupStore from './redux/setupStore'
+const store = setupStore();
 
 export default class App extends Component {
-    constructor(props) {
-      super(props);
-
-      this.state={
-        menuItems: null,
-        orderItems: [],
-        customerInfo: null
-      }
-
-      this.props.store.subscribe(() => {
-        this.setState(this.props.store.getState());
-      });
-    }
-
-  render() {
+  
+  render(){
     return(
-      <div className="App">
-        <OrderPage
-          menuItems={this.state.menuItems}
-          orderItems={this.state.orderItems}
-          customerInfo={this.state.customerInfo}
-          onAddItem={this._onAddItem}
-          onSubmitOrderForm={this._onSubmitOrderForm}
-          onCloseOrderSuccessMessage={this._onCloseOrderSuccessMessage}
-        />
+      <div className="app">
+        <Provider store={store}>
+          <OrderPageContainer />
+        </Provider>
       </div>
+      
     )
   }
-
-  componentDidMount(){
-    this.props.store.dispatch(getMenuProcess())
-  };
-
-  _onAddItem = itemId => {
-    this.props.store.dispatch(addItemProcess(itemId))
-  };
-
-  _onSubmitOrderForm = ({name, phone, address}) => {
-    this.props.store.dispatch(submitOrderFormProcess(name, phone, address))
-  }
-
-  _onCloseOrderSuccessMessage = () => {
-    this.props.store.dispatch(closeOrderSuccessProcess())
-  }
-
 }
