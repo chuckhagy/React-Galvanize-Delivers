@@ -1,10 +1,10 @@
-/* eslint-disable import/first */
 import data from './mock-data.json'
+/* eslint-disable import/first */
 jest.mock('../requests/getMenuItems')
 import getMenuProcess from '../redux/thunks/getMenuProcess'
 import getMenuItems from '../requests/getMenuItems'
 
-describe('get menue process THUNK', () => {
+describe('get menu process API THUNK processing fetch', () => {
   it('calls getMenu API utility function, returns an array, and dispatches successfully', () => {
 
     //first one below - check the type
