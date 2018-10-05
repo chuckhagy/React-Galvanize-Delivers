@@ -4,7 +4,9 @@ import MenuItemComponent from './MenuItemComponent';
 export default function MenuComponent({ items }) {
   return (
     <div className="MenuComponent">
-      {items.map(item => <MenuItemComponent item={item} key={item.id} />)}
+      {items.map(item => (
+        <MenuItemComponent item={item} key={item.id} />
+      ))}
     </div>
   );
 }
